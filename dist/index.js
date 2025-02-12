@@ -87,6 +87,7 @@ var createPriceService = (apiKey) => {
     }
   });
   const getPrice = async (symbol, currency) => {
+    var _a, _b, _c;
     const normalizedSymbol = symbol.toUpperCase().trim();
     const normalizedCurrency = currency.toUpperCase().trim();
     try {
@@ -123,7 +124,7 @@ var createPriceService = (apiKey) => {
       };
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data?.status?.error_message || error.message;
+        const errorMessage = ((_c = (_b = (_a = error.response) == null ? void 0 : _a.data) == null ? void 0 : _b.status) == null ? void 0 : _c.error_message) || error.message;
         console.error("API Error:", errorMessage);
         throw new Error(`API Error: ${errorMessage}`);
       }
